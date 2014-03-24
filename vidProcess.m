@@ -19,26 +19,21 @@ else
 end
 
 
+
 % --- Executes just before VidProcess is made visible.
 function VidProcess_OpeningFcn(hObject, eventdata, handles, varargin)
-% Choose default command line output for VidProcess
 handles.output = hObject;
-% Update handles structure
 guidata(hObject, handles);
-% UIWAIT makes VidProcess wait for user response (see UIRESUME)
-% uiwait(handles.MainWin);
 axes(handles.TitlePicture);
 img = imread('data\webcam-128.png');
 imshow(img);
 
+
+
 % --- Outputs from this function are returned to the command line.
 function varargout = VidProcess_OutputFcn(hObject, eventdata, handles) 
-% varargout  cell array for returning output args (see VARARGOUT);
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-% Get default command line output from handles structure
 varargout{1} = handles.output;
+
 
 
 % --- Executes on selection change in ProcessList.
@@ -51,11 +46,13 @@ function ProcessList_Callback(hObject, eventdata, handles)
 %        contents{get(hObject,'Value')} returns selected item from ProcessList
 
 
+
 % --- Executes during object creation, after setting all properties.
 function ProcessList_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
 
 
 % --- Executes on button press in StartButton.
@@ -76,6 +73,5 @@ while(ishandle(hObject))
         imshow(img);
     end
 end
-
 delete(vid);
 clear vid;
